@@ -1,4 +1,4 @@
-namespace Generisk_meny;
+namespace GenericMenu;
 
 class MenuRepository
 {

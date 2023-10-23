@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generisk_meny", "Generisk_meny.csproj", "{FA023D05-E35D-4D8C-A0C3-13553CBC3578}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericMenu", "GenericMenu.csproj", "{FEE41882-54FC-435C-9BD6-6486474B9ADA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FA023D05-E35D-4D8C-A0C3-13553CBC3578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA023D05-E35D-4D8C-A0C3-13553CBC3578}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA023D05-E35D-4D8C-A0C3-13553CBC3578}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA023D05-E35D-4D8C-A0C3-13553CBC3578}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEE41882-54FC-435C-9BD6-6486474B9ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEE41882-54FC-435C-9BD6-6486474B9ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEE41882-54FC-435C-9BD6-6486474B9ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEE41882-54FC-435C-9BD6-6486474B9ADA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AD79D6CB-BFAB-42CC-95F0-4E28AC90A63C}
+		SolutionGuid = {47376C28-008D-4257-A7B3-AA7E68EFC2E3}
 	EndGlobalSection
 EndGlobal

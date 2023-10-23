@@ -1,8 +1,12 @@
-namespace Generisk_meny;
+namespace GenericMenu;
 
 class UI
 {
-    public static void MenuInstructions()
+    static UI()
+    {
+        Console.CursorVisible = false;
+    }
+    public static void WriteMenuInstructions()
     {
         Console.WriteLine("\n↑↓ för att välja");
         Console.WriteLine("Enter för att bekräfta");

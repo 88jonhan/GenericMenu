@@ -1,4 +1,4 @@
-namespace Generisk_meny;
+namespace GenericMenu;
 
 class Menu
 {
@@ -33,7 +33,7 @@ class Menu
         {
             Console.Clear();
             MenuRepository.UpdateMenu(activeItem, listToShow, showNumbers, brackets);
-            UI.MenuInstructions();
+            UI.WriteMenuInstructions();
             ConsoleKeyInfo key = Console.ReadKey();
 
             switch (key.Key)
