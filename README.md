@@ -3,20 +3,20 @@
 ## Menu.ListMenu(List<T>)
 Funktionen har två overrides:
 
-##   Menu.ListMenu(List<T>) //Visa listan utan numrering
+##   Menu.ListMenu(List\<T\>) //Visa listan utan numrering
     Item 1
     Item 2
     Item 3
     Item 4
 
-##   Menu.ListMenu(List<T>, bool) // Visa listan med standard-numrering
+##   Menu.ListMenu(List\<T\>, bool) // Visa listan med standard-numrering
 
     1. Item 1
     2. Item 2
     3. Item 3
     4. Item 4
 
-##   Menu.ListMenu(List<T>, bool, string) //Visa listan med formaterad numrering. 
+##   Menu.ListMenu(List\<T\>, bool, string) //Visa listan med formaterad numrering. 
 ###   string = [T]
     [1] Item 1
     [2] Item 2
@@ -37,6 +37,7 @@ Funktionen har två overrides:
 #Exempel:
 
 ###Skapa lista med objekt
+```C#
     List<GenericItem1> items1 = new List<GenericItem1>()
     {
         new GenericItem1() { Name = "Name 1" },
@@ -44,12 +45,15 @@ Funktionen har två overrides:
         new GenericItem1() { Name = "Name 3" },
         new GenericItem1() { Name = "Name 4" }
     };
+```
 
 ###Skapa variabel item som kommer att vara ett objekt ur listan, eller "default" (vilket innebär att användaren avbrutit åtgärden)
+```C#
     var item = ListMenu(items1)
-
+```
 
 ###Klass för vårt objekt med ToString() override
+```C#
     public class GenericItem1
     {
         public string Name { get; set; }
@@ -59,3 +63,4 @@ Funktionen har två overrides:
             return Name;
         }
     }
+```
