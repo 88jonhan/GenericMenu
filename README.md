@@ -1,6 +1,6 @@
 # `GenericMenu`
 
-## Menu.ListMenu(List<T>)
+## Menu.ListMenu(List\<T\>)
 Funktionen har två overrides:
 
 ##   Menu.ListMenu(List\<T\>) //Visa listan utan numrering
@@ -34,9 +34,9 @@ Funktionen har två overrides:
 ## Knapptryck Q returnerar ett objekt som är "default", vilket man behöver kontrollera 
 
 
-#Exempel:
+# Exempel:
 
-###Skapa lista med objekt
+### Skapa lista med objekt
 ```C#
     List<GenericItem1> items1 = new List<GenericItem1>()
     {
@@ -47,12 +47,12 @@ Funktionen har två overrides:
     };
 ```
 
-###Skapa variabel item som kommer att vara ett objekt ur listan, eller "default" (vilket innebär att användaren avbrutit åtgärden)
+### Skapa variabel item som kommer att vara ett objekt ur listan, eller "default" (vilket innebär att användaren avbrutit åtgärden)
 ```C#
     var item = ListMenu(items1)
 ```
 
-###Klass för vårt objekt med ToString() override
+### Klass för vårt objekt med ToString() override
 ```C#
     public class GenericItem1
     {
