@@ -29,7 +29,10 @@ Funktionen har två overrides:
     4 -> Item 4
 
 # För generiska objekt som inte är string eller int ska kunna visas korrekt behöver objekten ha en override ToString()
+# Där den returnerade strängen kommer att visas som meny-akternativet
+
 # Knapptryck Q returnerar ett objekt som är "default", vilket man behöver kontrollera 
+
 
 Exempel:
 

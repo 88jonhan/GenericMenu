@@ -14,5 +14,5 @@ public class Config
 
 
     //Vilken knapp som ska tryckas på för att "avbryta"
-    public const ConsoleKey ReturnKey = ConsoleKey.R;
+    public const ConsoleKey ReturnKey = ConsoleKey.Q;
 }
