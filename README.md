@@ -30,6 +30,18 @@ Funktionen har två overrides:
 ### Knapptryck Q returnerar ett objekt som är "default", vilket man behöver kontrollera 
 
 # Exempel:
+### Klass för vårt objekt med ToString() override
+```C#
+    public class GenericItem1
+    {
+        public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+    }
+```
 ### Skapa lista med objekt
 ```C#
     List<GenericItem1> items1 = new List<GenericItem1>()
@@ -44,15 +56,16 @@ Funktionen har två overrides:
 ```C#
     var item = ListMenu(items1)
 ```
-### Klass för vårt objekt med ToString() override
+### Se om funktionen returnerade ett objekt eller ett "default"-objekt
 ```C#
-    public class GenericItem1
-    {
-        public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
+if (item == default)
+{
+    Console.Clear();
+    Console.WriteLine("Returnerade null/åtgärden avbröts");
+}
+else
+{
+    Console.Clear();
+    Console.WriteLine($"Returnerat objekt: {item}");
+}
 ```
