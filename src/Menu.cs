@@ -1,6 +1,6 @@
 namespace GenericMenu;
 
-class Menu
+public class Menu
 {
     /// <summary>
     /// Initialises ListMenu method with overrides
