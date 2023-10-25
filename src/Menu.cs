@@ -24,6 +24,8 @@ public class Menu
     /// Gets the list from the method ListMenu, with optional overrides for showing and formating of prefix-numbers in the list
     /// </summary>
     /// <param name="listToShow">The list to use as menu.</param>
+    /// <param name="showNumbers">Bool to control wether or not prefix-numbers should be written out before the item</param>
+    /// <param name="brackets">The format of the prefix numbers.</param>
     /// <returns>The chosen object from the list, or default(T) if no item were chosen</returns>
     public static T ShowMenuAndCheckUserInput<T>(List<T> listToShow, bool showNumbers, string brackets)
     {
