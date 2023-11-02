@@ -68,7 +68,6 @@ class MenuRepository
             int currentItem = 0;
             int checkIfLastItemOnPage = 0;
 
-
             while (checkIfLastItem < totalItems)
             {
                 while (checkIfLastItemOnPage < itemsPerPage)
@@ -83,18 +82,16 @@ class MenuRepository
         Console.WriteLine(activePage + "/" + totalPages);
     }
 
-    public static int GetItemsPerPage(int totalItems)
+    public static int GetItemsPerPage()
     {
-        int itemsPerPage;
         if (Console.WindowHeight <= 10)
         {
-            itemsPerPage = 1;
+            return 1;
         }
         else
         {
-            itemsPerPage = Console.WindowHeight - 10;
+            return Console.WindowHeight - 10;
         }
-        return itemsPerPage;
     }
 
     public static int GetTotalPages(int itemsPerPage, int totalItems)
@@ -112,7 +109,7 @@ class MenuRepository
             else
             {
                 int remainder = totalItems % itemsPerPage;
-                return (totalItems - remainder) / itemsPerPage;
+                return int.Max((totalItems - remainder) / itemsPerPage, 2);
             }
         }
     }

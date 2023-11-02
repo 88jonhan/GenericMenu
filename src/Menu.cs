@@ -37,13 +37,13 @@ public class Menu
         while (menuActive)
         {
             Console.Clear();
-            int itemsPerPage = MenuRepository.GetItemsPerPage(totalItems);
+            int itemsPerPage = MenuRepository.GetItemsPerPage();
             int totalPages = MenuRepository.GetTotalPages(itemsPerPage, totalItems);
 
             (int, int, int, int) pagesData = (totalPages, activePage, itemsPerPage, totalItems);
 
             MenuRepository.UpdateMenu(activeItem, pagesData, listToShow, showNumbers, brackets);
-            UI.WriteMenuInstructions();
+            UI.WriteMenuInstructions(itemsPerPage);
             ConsoleKeyInfo key = Console.ReadKey();
 
             switch (key.Key)
@@ -68,7 +68,7 @@ public class Menu
                 default:
                     continue;
             }
-            MenuRepository.UpdateMenu(activeItem, pagesData, listToShow, showNumbers, brackets);
+
         }
         return default;
     }
