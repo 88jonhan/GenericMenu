@@ -31,10 +31,18 @@ public class Menu
     {
         bool menuActive = true;
         int activeItem = 1;
+        int activePage = 1;
+        int totalItems = listToShow.Count;
+
         while (menuActive)
         {
             Console.Clear();
-            MenuRepository.UpdateMenu(activeItem, listToShow, showNumbers, brackets);
+            int itemsPerPage = MenuRepository.GetItemsPerPage(totalItems);
+            int totalPages = MenuRepository.GetTotalPages(itemsPerPage, totalItems);
+
+            (int, int, int, int) pagesData = (totalPages, activePage, itemsPerPage, totalItems);
+
+            MenuRepository.UpdateMenu(activeItem, pagesData, listToShow, showNumbers, brackets);
             UI.WriteMenuInstructions();
             ConsoleKeyInfo key = Console.ReadKey();
 
@@ -42,11 +50,15 @@ public class Menu
             {
                 case ConsoleKey.UpArrow:
                     activeItem = activeItem == 1 ? listToShow.Count : activeItem - 1;
-                    MenuRepository.UpdateMenu(activeItem, listToShow, showNumbers, brackets);
                     break;
                 case ConsoleKey.DownArrow:
                     activeItem = activeItem == listToShow.Count ? 1 : activeItem + 1;
-                    MenuRepository.UpdateMenu(activeItem, listToShow, showNumbers, brackets);
+                    break;
+                case ConsoleKey.LeftArrow:
+                    activePage = activePage == 1 ? 1 : activePage - 1;
+                    break;
+                case ConsoleKey.RightArrow:
+                    activePage = activePage == totalPages ? totalPages : activePage + 1;
                     break;
                 case ConsoleKey.Enter:
                     return listToShow[activeItem - 1];
@@ -56,6 +68,7 @@ public class Menu
                 default:
                     continue;
             }
+            MenuRepository.UpdateMenu(activeItem, pagesData, listToShow, showNumbers, brackets);
         }
         return default;
     }
