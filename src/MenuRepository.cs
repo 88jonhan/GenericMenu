@@ -8,14 +8,26 @@ class MenuRepository
     /// <param name="iteration">Current iteration of the loop</param>
     /// <param name="active">The item in the list that should be active</param>
     /// <returns>Bool if the current iteration represents the current item</returns>
-    public static bool CheckIfActive(int iteration, int active)
+    public static void CheckIfActive<T>(int iteration, int active, bool showNumbers, string brackets, T item)
     {
-        bool isActive = false;
         if (iteration == active)
         {
-            isActive = true;
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            if (showNumbers)
+            {
+                Console.Write($"{brackets.Replace("T", $"{iteration}")} ");
+            }
+            Console.WriteLine(item);
+            Console.ResetColor();
         }
-        return isActive;
+        else
+        {
+            if (showNumbers)
+            {
+                Console.Write($"{brackets.Replace("T", $"{iteration}")} ");
+            }
+            Console.WriteLine(item);
+        }
     }
 
     /// <summary>
@@ -28,12 +40,12 @@ class MenuRepository
     /// <returns>The chosen object from the list.</returns>
     /// 
     //pagesData = (totalPages, activePage, itemsPerPage, totalItems);
-    public static void UpdateMenu<T>(int activeItem, (int, int, int, int) pagesData, List<T> listToShow, bool showNumbers, string brackets)
+    public static void UpdateMenu<T>(int activeItem, (int totalPages, int activePage, int itemsPerPage, int totalItems) pagesData, List<T> listToShow, bool showNumbers, string brackets)
     {
-        int totalPages = pagesData.Item1;
-        int activePage = pagesData.Item2;
-        int itemsPerPage = pagesData.Item3;
-        int totalItems = pagesData.Item4;
+        int totalPages = pagesData.totalPages;
+        int activePage = pagesData.activePage;
+        int itemsPerPage = pagesData.itemsPerPage;
+        int totalItems = pagesData.totalItems;
 
         int iteration = 1;
 
@@ -41,56 +53,68 @@ class MenuRepository
         {
             foreach (T item in listToShow)
             {
-                if (CheckIfActive(activeItem, iteration))
-                {
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
-                    if (showNumbers)
-                    {
-                        Console.Write($"{brackets.Replace("T", $"{iteration}")} ");
-                    }
-                    Console.WriteLine(item);
-                    Console.ResetColor();
-                }
-                else
-                {
-                    if (showNumbers)
-                    {
-                        Console.Write($"{brackets.Replace("T", $"{iteration}")} ");
-                    }
-                    Console.WriteLine(item);
-                }
+                CheckIfActive(activeItem, iteration, showNumbers, brackets, item);
                 iteration++;
             }
         }
         else
         {
-            int checkIfLastItem = 0;
+            int checkIfLastItem = 1;
             int currentItem = 0;
             int checkIfLastItemOnPage = 0;
+            bool fewerOnLastPage = false;
 
             while (checkIfLastItem < totalItems)
             {
+                int remainder = totalItems % itemsPerPage;
+                if (remainder == 0)
+                {
+                    fewerOnLastPage = true;
+                }
                 while (checkIfLastItemOnPage < itemsPerPage)
                 {
-                    Console.WriteLine(listToShow[currentItem]);
+                    if (activePage == 1)
+                    {
+                        CheckIfActive(activeItem, iteration, showNumbers, brackets, listToShow[currentItem]);
+                        currentItem++;
+                    }
+                    else if (activePage != totalPages)
+                    {
+                        CheckIfActive(activeItem * (activePage - 1), iteration, showNumbers, brackets, listToShow[itemsPerPage * (activePage - 1) + currentItem]);
+                        currentItem++;
+                    }
+                    else if (activePage == totalPages)
+                    {
+                        if (remainder != 0)
+                        {
+                            currentItem = totalItems - remainder;
+                            CheckIfActive(activeItem - remainder, iteration, showNumbers, brackets, listToShow[currentItem]);
+                            remainder--;
+                        }
+                        else if (fewerOnLastPage)
+                        {
+                            CheckIfActive(activeItem + itemsPerPage, iteration, showNumbers, brackets, listToShow[itemsPerPage + currentItem]);
+                            currentItem++;
+                        }
+                    }
                     checkIfLastItemOnPage++;
-                    currentItem++;
+                    iteration++;
                 }
                 checkIfLastItem++;
             }
         }
-        Console.WriteLine(activePage + "/" + totalPages);
+        Console.WriteLine("Sida " + activePage + " av " + totalPages);
     }
 
     public static int GetItemsPerPage()
     {
-        if (Console.WindowHeight <= 10)
+        if (Console.BufferHeight <= 10)
         {
             return 1;
         }
         else
         {
-            return Console.WindowHeight - 10;
+            return Console.BufferHeight - 10;
         }
     }
 
@@ -109,7 +133,7 @@ class MenuRepository
             else
             {
                 int remainder = totalItems % itemsPerPage;
-                return int.Max((totalItems - remainder) / itemsPerPage, 2);
+                return ((totalItems - remainder) / itemsPerPage) + 1;
             }
         }
     }

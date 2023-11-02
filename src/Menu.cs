@@ -43,7 +43,7 @@ public class Menu
             (int, int, int, int) pagesData = (totalPages, activePage, itemsPerPage, totalItems);
 
             MenuRepository.UpdateMenu(activeItem, pagesData, listToShow, showNumbers, brackets);
-            UI.WriteMenuInstructions(itemsPerPage);
+            UI.WriteMenuInstructions(itemsPerPage, totalItems);
             ConsoleKeyInfo key = Console.ReadKey();
 
             switch (key.Key)
