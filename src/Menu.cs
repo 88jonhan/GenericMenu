@@ -57,6 +57,7 @@ public class Menu
                     {
                         activeItem--;
                     }
+                    MenuRepository.UpdateMenu(activeItem, listToShow, showNumbers, brackets);
                     break;
                 case ConsoleKey.DownArrow:
                     if (activeItem == listToShow.Count)
@@ -67,18 +68,7 @@ public class Menu
                     {
                         activeItem++;
                     }
-                    break;
-                case ConsoleKey.RightArrow:
-                    if (activePage != pagesAndRemainder.Item1)
-                    {
-                        activePage++;
-                    }
-                    break;
-                case ConsoleKey.LeftArrow:
-                    if (activePage != 1)
-                    {
-                        activePage--;
-                    }
+                    MenuRepository.UpdateMenu(activeItem, listToShow, showNumbers, brackets);
                     break;
                 case ConsoleKey.Enter:
                     return listToShow[activeItem - 1];
