@@ -41,25 +41,11 @@ public class Menu
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    if (activeItem == 1)
-                    {
-                        activeItem = listToShow.Count;
-                    }
-                    else
-                    {
-                        activeItem--;
-                    }
+                    activeItem = activeItem == 1 ? listToShow.Count : activeItem - 1;
                     MenuRepository.UpdateMenu(activeItem, listToShow, showNumbers, brackets);
                     break;
                 case ConsoleKey.DownArrow:
-                    if (activeItem == listToShow.Count)
-                    {
-                        activeItem = 1;
-                    }
-                    else
-                    {
-                        activeItem++;
-                    }
+                    activeItem = activeItem == listToShow.Count ? 1 : activeItem + 1;
                     MenuRepository.UpdateMenu(activeItem, listToShow, showNumbers, brackets);
                     break;
                 case ConsoleKey.Enter:
